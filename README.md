@@ -2,14 +2,14 @@
 
 HOW TO PLAY!
 ============
-1 - Download from Github
-2 - Unzip to a folder and navigate to it in Terminal
-3 - npm install
-4 - npm start
-5 - In your browser, go to localhost:3000
-6 - When you die, refresh the page. It doesn't have a reset yet!
+* Download from Github
+* Unzip to a folder and navigate to it in Terminal
+* npm install
+* npm start
+* In your browser, go to localhost:3000
+* When you die, refresh the page. It doesn't have a reset yet!
 
-===============================================================================================================
+========================================================================
 
 This is a Codeclan group project by:
   https://github.com/Jen-Jen91
@@ -27,8 +27,7 @@ This is a Codeclan group project by:
 
  We used Bootstrap to style the frontend.
  
- ===============================================================================================================
-
+ =======================================================================
 17-1-19 
 =======
 
