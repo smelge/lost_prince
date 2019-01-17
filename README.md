@@ -1,5 +1,16 @@
 # lost_prince
 
+HOW TO PLAY!
+============
+1 - Download from Github
+2 - Unzip to a folder and navigate to it in Terminal
+3 - npm install
+4 - npm start
+5 - In your browser, go to localhost:3000
+6 - When you die, refresh the page. It doesn't have a reset yet!
+
+===============================================================================================================
+
 This is a Codeclan group project by:
   https://github.com/Jen-Jen91
   https://github.com/Jordanraitt
@@ -15,3 +26,20 @@ This is a Codeclan group project by:
  Dragons API.
 
  We used Bootstrap to style the frontend.
+ 
+ ===============================================================================================================
+
+17-1-19 
+=======
+
+Bugfixes
+========
+* Player took damage instantly when attacked by enemies instead of when hit
+* Enemy Healthbars would use HP as percentage of Healthbar. e.g. Starts at 100%, when updated would drop to 15% if HP was 15
+* Player death would be instant with no time to see what killed you. Added delay for Death Screen.
+
+Improvements
+============
+* Removed files that were doing nothing
+* Removed old commented out code
+* Cleaned up some functions
