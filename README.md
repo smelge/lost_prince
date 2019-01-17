@@ -26,19 +26,15 @@ This is a Codeclan group project by:
  Dragons API.
 
  We used Bootstrap to style the frontend.
- 
- =======================================================================
-17-1-19 
-=======
 
 Bugfixes
-========
+--------
 * Player took damage instantly when attacked by enemies instead of when hit
 * Enemy Healthbars would use HP as percentage of Healthbar. e.g. Starts at 100%, when updated would drop to 15% if HP was 15
 * Player death would be instant with no time to see what killed you. Added delay for Death Screen.
 
 Improvements
-============
+------------
 * Removed files that were doing nothing
 * Removed old commented out code
 * Cleaned up some functions
