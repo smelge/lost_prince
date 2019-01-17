@@ -6,6 +6,7 @@ const PointsTracker = require('./points_model.js');
 
 const Fight = function () {
   this.player = new Player;
+  this.monsterInit = 0;
 };
 
 const pointsTracker = new PointsTracker();
@@ -20,6 +21,7 @@ Fight.prototype.playerAttack = function (monster){
   if (monster != null){
     const monsterName = monster.name;
     const monsterAttack = monster.attack;
+    this.monsterInit = monster.hp;
 
     //Dice Roll Values Per Attack
     const playerAtk = this.player.getAttackHtml();
@@ -106,7 +108,10 @@ Fight.prototype.monsterAttack = function (monster) {
 
       // Update player HP
       var newPlayerHp = this.player.getHpHtml() - fightDamage;
-      this.player.updateHp(newPlayerHp);
+      setTimeout(()=>{
+        this.player.updateHp(newPlayerHp);
+      },2000);
+
 
     } else {
       revengeResult = `The ${monsterName} attacked you. It rolled [${enemyRoll}] and you rolled [${playerRoll}]. It failed to hurt you physically, but emotionally you are devastated.`
@@ -120,7 +125,7 @@ Fight.prototype.monsterAttack = function (monster) {
       var diceReset = ['...','...'];
       setTimeout(function(){
         PubSub.publish('Dice:input',diceReset);
-      },2000)
+      },2000);
       return `${revengeResult} ${additional}`;
     } else {
       if (enemyRoll == playerRoll){
@@ -144,7 +149,9 @@ Fight.prototype.monsterAttack = function (monster) {
 
         // Update player HP
         var newPlayerHp = this.player.getHpHtml() - fightDamage;
-        this.player.updateHp(newPlayerHp);
+        setTimeout(()=>{
+          this.player.updateHp(newPlayerHp);
+        },2000);
 
       } else {
         revengeResult = `The ${monsterName} (${this.getMonsteHp()} HP) attacked you. It rolled [${enemyRoll}] and you rolled [${playerRoll}]. It failed to hurt you physically, but emotionally you are devastated.`
@@ -184,8 +191,12 @@ Fight.prototype.sendMonster = function(monsterInfo){
     if (this.getMonsteHp() == 0){
       var theirAttack = `You hit the ${monster.name} so hard it instantly disappears with no death animation.`;
       monsterInfo = null;
-      this.enableNavigation();
-      this.clearMonster();
+      setTimeout(()=>{
+
+        this.enableNavigation();
+        this.clearMonster();
+      },2000);
+
 
     } else {
       var theirAttack = this.monsterAttack(monsterInfo);
@@ -199,11 +210,12 @@ Fight.prototype.sendMonster = function(monsterInfo){
     if (this.player.getHpHtml() <= 0) {
       this.player.updateHp(0)
       const gameOver = new GameOver();
-      gameOver.playerDied();
+
       setTimeout(()=>{
         this.disableUI();
         this.clearMonster();
         this.removeMonsterBar();
+        gameOver.playerDied();
       },2050);
 
       var diceReset = ['...','...'];
@@ -338,7 +350,10 @@ Fight.prototype.updateMonsterBar = function(){
     hp = 0;
   }
   healthBar.textContent = `${hp} HP`;
-  healthBar.setAttribute('style',`width:${hp}%`);
+
+  var hpPercent = (100/this.monsterInit)*hp
+
+  healthBar.setAttribute('style',`width:${hpPercent}%`);
 }
 
 Fight.prototype.removeMonsterBar = function(){

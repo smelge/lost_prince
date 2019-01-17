@@ -7,21 +7,22 @@ const GameOver = function () {
 
 
 GameOver.prototype.playerDied = function () {
+  setTimeout(()=>{
+    this.container.innerHTML = "";
 
-  this.container.innerHTML = "";
+    const gameOver = document.createElement("h1");
+    gameOver.textContent = "You Died";
+    this.container.appendChild(gameOver);
 
-  const gameOver = document.createElement("h1");
-  gameOver.textContent = "You Died";
-  this.container.appendChild(gameOver);
+    const background = document.getElementById("background-img");
+    background.setAttribute("src", "./images/Death.gif");
 
-  const background = document.getElementById("background-img");
-  background.setAttribute("src", "./images/Death.gif");
+    const end = new EndView(this.container);
+    end.disableButtons();
 
-  const end = new EndView(this.container);
-  end.disableButtons();
-
-  const player = document.querySelector("#playerImage")
-  player.src = "./images/Player-dead.gif"
+    const player = document.querySelector("#playerImage")
+    player.src = "./images/Player-dead.gif"
+  },2000);
 };
 
 module.exports = GameOver;
