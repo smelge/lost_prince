@@ -1,4 +1,4 @@
-# lost_prince
+# The Lost Prince
 
 HOW TO PLAY!
 ============
